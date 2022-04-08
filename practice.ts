@@ -1,4 +1,21 @@
 //TypeScript generic arrow functions
+
+
+interface Props {
+  
+}
+
+export const App: React.FC<Props> = (props) => {
+  return (
+    <>
+     <SomeComponent/>
+    </>
+  );
+};
+
+
+
+
 let getArray = <T>(items: T[]): T[] => {
     return new Array<T>().concat(items)
 }
