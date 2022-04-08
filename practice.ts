@@ -22,3 +22,42 @@ const Search = React.forwardRef<HTMLInputElement>((props, ref) => {
   return <input ref={ref} type="search" />;
 });
 
+//Typescript context boilerplate
+
+import React, { useState, useEffect, createContext, useContext } from 'react';
+
+interface AppContext {
+  
+  }
+  
+  const defaultState = { 'TestDefaultState': 'value of the test state' };
+  
+  export const AppContext = React.createContext<AppContext>(defaultState);
+
+
+
+
+type Props = {
+    children: React.ReactNode
+}
+
+
+
+export  function ContextProvider({children, ...props}: Props) {
+    const [ appDefaultState, setAppDefaultState ] = useState(defaultState)
+  return (
+    <AppContext.Provider value={appDefaultState} >
+        {children}
+    </AppContext.Provider>
+  )
+}
+
+
+
+export default function useAppContext() {
+  return (
+    useContext(AppContext)
+  )
+}
+
+  
